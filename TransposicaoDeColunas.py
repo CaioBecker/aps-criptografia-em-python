@@ -1,31 +1,49 @@
-def CriptografarPorColunas(cripto_4):
+def func_criptografar_coluna(cripto,tp):
     texto_separado = []
-    text_criptografado_pronto = []
-    texto_criptografado = {}
+    text_criptografado_pronto = ''
+    dc_arrays = {1: [], 2: [], 3: [], 4: []}
+
+    #COLOCAR TRY
 
     a = 0
-    while a < len(cripto_4):
-        texto_separado.append(cripto_4[a])
+    while a < len(cripto):
+        texto_separado.append(cripto[a])
         a += 1
 
-    b = 0
-    control = len(texto_separado) - 3
-    while b <= control:
-        texto_criptografado[str(texto_separado[0:3])] = b
-        del (texto_separado[0:3])
-        b += 1
+    a = 0
 
-    for teste in texto_criptografado.keys():
-        if teste == "[]":
-            del (texto_criptografado[teste])
+    while a < round(len(cripto)/3):
+        dc_arrays[1].append(texto_separado[0])
+        del (texto_separado[0])
+        dc_arrays[2].append(texto_separado[0])
+        del (texto_separado[0])
+        dc_arrays[3].append(texto_separado[0])
+        del (texto_separado[0])
 
-    print(texto_criptografado)
+        a += 1
 
-    """text_criptografado_pronto.append(texto_criptografado)
-    texto_separado = []
-    for texto in text_criptografado_pronto:
-        for x, y in texto.items():
-            texto_separado.append(x + ": " + str(y))
-    """
-    print(texto_separado)
-    print(control)
+    if tp == 'D' :
+        dc_arrays[4] = dc_arrays[2]
+        dc_arrays[2] = dc_arrays[1]
+        dc_arrays[1] = dc_arrays[3]
+        dc_arrays[3] = dc_arrays[4]
+    else:
+        dc_arrays[4] = dc_arrays[1]
+        dc_arrays[1] = dc_arrays[2]
+        dc_arrays[2] = dc_arrays[3]
+        dc_arrays[3] = dc_arrays[4]
+
+    a = 0
+
+    while a < round(len(cripto) / 3):
+
+        text_criptografado_pronto = text_criptografado_pronto + dc_arrays[1][a]
+        text_criptografado_pronto = text_criptografado_pronto + dc_arrays[2][a]
+        text_criptografado_pronto = text_criptografado_pronto + dc_arrays[3][a]
+
+        a += 1
+
+
+    return text_criptografado_pronto
+    #for i in dc_arrays[1]:
+    #    print(i)
