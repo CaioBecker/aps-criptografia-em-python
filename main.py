@@ -1,44 +1,47 @@
-import random
+from pickle import TRUE
+
 import chaves_cesar as cc
 import TransposicaoDeColunas as tdc
 
-def func_criptografar(cripto, texto):
-    texto_quebrado = []
-    texto_cripto = []
+while(TRUE):
+    opcao = input('Criptografar-1 / Descriptografar-2\n')
+    
+    if opcao == '1' or opcao == '2':
+        if(opcao == '1'):
+            
+            padrao = int(input("Digite o padrão para a cifra de cesar:\n"))
+            
+            cifra = cc.func_gerar_cifra(padrao)
+            
+            cripto_1 = cc.func_criptografar(cifra, input("Digite um texto para criptografar:\n"))
+            padrao = padrao + padrao
+            print(padrao)
+            cripto_2 = cc.func_criptografar(cifra, cripto_1)
+            padrao = padrao + padrao
+            print(padrao)
+            cripto_3 = cc.func_criptografar(cifra, cripto_2)
+            padrao = padrao + padrao
+            print(padrao)
+            cripto_4 = cc.func_criptografar(cifra, cripto_3)
+            padrao = padrao + padrao
+            print(padrao)
+            
+            print(f'Cifra de cesar:{cripto_4}')
 
-    count = 0
-    while count < len(texto):
-        texto_quebrado.append(texto[count])
-        count = count + 1
+            cripto_5 = tdc.func_criptografar_coluna(cripto_4, 'C')
 
-    for i in texto_quebrado:
-        r = random.randint(1, 3)
-        if r == 1:
-            texto_cripto.append(cripto[i.upper()].lower())
+            print(f'Tranpocicao de colunas:"{cripto_5}"')
         else:
-            texto_cripto.append(cripto[i.upper()].upper())
+            
+            padrao = (int(input("Digite o padrão para a cifra de cesar:\n")))*30
 
-    texto = ''
-    for i in texto_cripto:
-        texto = texto + str(i)
+            cifra = cc.func_gerar_cifra(padrao)
+            
+            des_cripto_1 = tdc.func_criptografar_coluna(input("Digite um texto para descriptografar:\n"), 'D')
 
-    return texto
+            des_cripto_2 = cc.func_criptografar(cifra, des_cripto_1)
 
-cripto_1 = func_criptografar(cc.cripto_cc, input("Digite um texto para criptografar:\n").upper())
-cripto_2 = func_criptografar(cc.cripto_cc, cripto_1)
-cripto_3 = func_criptografar(cc.cripto_cc, cripto_2)
-cripto_4 = func_criptografar(cc.cripto_cc, cripto_3)
-print(f'Cifra de cesar:{cripto_4}')
+            print(f'Descriptografado:{des_cripto_2}')
 
-cripto_5 = tdc.func_criptografar_coluna(cripto_4, 'C')
-
-print(f'Tranpocicao de colunas:{cripto_5}')
-
-des_cripto_1 = tdc.func_criptografar_coluna(cripto_5, 'D')
-
-des_cripto_2 = func_criptografar(cc.cripto_cc_volta, des_cripto_1)
-
-print(f'Descriptografado:{des_cripto_2.upper()}')
-
-#VALOR PARA TESTE
-#1234567890abcdefghijklmnopqrstuvwxyz !@#$%^&*()-_=+[{]};:|<,>.?
+        #VALOR PARA TESTE
+        #1234567890abcdefghijklmnopqrstuvwxyz !@#$%^&*()-_=+[{]};:|<,>.?
