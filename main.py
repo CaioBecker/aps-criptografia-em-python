@@ -3,11 +3,11 @@ from pickle import TRUE
 import chaves_cesar as cc
 import TransposicaoDeColunas as tdc
 
-while(TRUE):
+while TRUE:
     opcao = input('Criptografar-1 / Descriptografar-2\n')
     
     if opcao == '1' or opcao == '2':
-        if(opcao == '1'):
+        if opcao == '1':
             
             padrao = int(input("Digite o padrão para a cifra de cesar:\n"))
             
@@ -26,7 +26,7 @@ while(TRUE):
             padrao = padrao + padrao
             print(padrao)
             
-            print(f'Cifra de cesar:{cripto_4}')
+            print(f'Cifra de cesar:"{cripto_4}"')
 
             cripto_5 = tdc.func_criptografar_coluna(cripto_4, 'C')
 
@@ -35,7 +35,13 @@ while(TRUE):
             
             padrao = (int(input("Digite o padrão para a cifra de cesar:\n")))*30
 
+            if padrao > 90:
+                padrao = padrao - 90
+
+            print(padrao)
             cifra = cc.func_gerar_cifra(padrao)
+
+            print(cifra)
             
             des_cripto_1 = tdc.func_criptografar_coluna(input("Digite um texto para descriptografar:\n"), 'D')
 
