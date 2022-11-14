@@ -1,6 +1,5 @@
 import math
 
-
 def func_criptografar_coluna(cripto, tp):
     texto_separado = []
     text_criptografado_pronto = ''

@@ -1,6 +1,7 @@
 from pickle import TRUE
 
-import chaves_cesar as cc
+import ChavesDeCriptografia as cdc
+import AssociacaoFixaDeValores as afdv
 import TransposicaoDeColunas as tdc
 
 while TRUE:
@@ -8,43 +9,19 @@ while TRUE:
     
     if opcao == '1' or opcao == '2':
         if opcao == '1':
-            
-            padrao = int(input("Digite o padrão para a cifra de cesar:\n"))
-            
-            cifra = cc.func_gerar_cifra(padrao, 'C')
-            
-            cripto_1 = cc.func_criptografar(cifra, input("Digite um texto para criptografar:\n"))
-            padrao = padrao + padrao
-            print(padrao)
-            """cripto_2 = cc.func_criptografar(cifra, cripto_1)
-            padrao = padrao + padrao
-            print(padrao)
-            cripto_3 = cc.func_criptografar(cifra, cripto_2)
-            padrao = padrao + padrao
-            print(padrao)
-            cripto_4 = cc.func_criptografar(cifra, cripto_3)
-            padrao = padrao + padrao
-            print(padrao)"""
-            print(cifra)
-            print(f'Cifra de cesar: "{cripto_1}"')
+            texto = input("Digite um texto para que seja criptografado: ")
 
-            cripto_5 = tdc.func_criptografar_coluna(cripto_1, 'C')
-
-            print(f'Tranpocicao de colunas: "{cripto_5}"')
+            cripto1 = afdv.criptografarTexto(cdc.associacaoDeValores, texto.upper())
+            cripto2 = afdv.criptografarTexto(cdc.associacaoDeValores, cripto1)
+            cripto3 = afdv.criptografarTexto(cdc.associacaoDeValores, cripto2)
+            cripto4 = afdv.criptografarTexto(cdc.associacaoDeValores, cripto3)
+            cripto5 = tdc.func_criptografar_coluna(cripto4, 'C')
+            print(cripto5.upper())
         else:
-            
-            padrao = int(input("Digite o padrão para a cifra de cesar:\n"))
-
-            cifra = cc.func_gerar_cifra(padrao, 'D')
-
-            cifra_des = cc.func_gerar_cifra_descripto(cifra)
-
-            print(cifra_des)
-
             des_cripto_1 = tdc.func_criptografar_coluna(input("Digite um texto para descriptografar:\n"), 'D')
-            des_cripto_2 = cc.func_criptografar(cifra_des, des_cripto_1)
+            des_cripto_2 = afdv.criptografarTexto(cdc.associacaoDeValoresVolta, des_cripto_1)
 
-            print(f'Descriptografado: {des_cripto_2}')
+            print(f'Descriptografado: {des_cripto_2.lower()}')
 
         #VALOR PARA TESTE
         #1234567890abcdefghijklmnopqrstuvwxyz !@#$%^&*()-_=+[{]};:|<,>.?
