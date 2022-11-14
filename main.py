@@ -15,8 +15,10 @@ while TRUE:
             cripto2 = afdv.criptografarTexto(cdc.associacaoDeValores, cripto1)
             cripto3 = afdv.criptografarTexto(cdc.associacaoDeValores, cripto2)
             cripto4 = afdv.criptografarTexto(cdc.associacaoDeValores, cripto3)
+            print(cripto4)
             cripto5 = tdc.func_criptografar_coluna(cripto4, 'C')
             print(cripto5.upper())
+
         else:
             des_cripto_1 = tdc.func_criptografar_coluna(input("Digite um texto para descriptografar:\n"), 'D')
             des_cripto_2 = afdv.criptografarTexto(cdc.associacaoDeValoresVolta, des_cripto_1)
