@@ -1,5 +1,3 @@
-import random
-
 def criptografarTexto(cripto, texto):
     textoSeparado = []
     textoCriptografado = []
@@ -10,11 +8,7 @@ def criptografarTexto(cripto, texto):
         count += 1
 
     for i in textoSeparado:
-        r = random.randint(1, 3)
-        if r == 1:
-            textoCriptografado.append(cripto[i.upper()].lower())
-        else:
-            textoCriptografado.append(cripto[i.upper()].upper())
+        textoCriptografado.append(cripto[i])
 
     texto = ''
 

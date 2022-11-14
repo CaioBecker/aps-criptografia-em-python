@@ -56,5 +56,3 @@ def func_criptografar_coluna(cripto, tp):
         a += 1
 
     return text_criptografado_pronto.replace('~', '')
-    # for i in dc_arrays[1]:
-    #    print(i)

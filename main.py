@@ -11,19 +11,21 @@ while TRUE:
         if opcao == '1':
             texto = input("Digite um texto para que seja criptografado: ")
 
-            cripto1 = afdv.criptografarTexto(cdc.associacaoDeValores, texto.upper())
+            cripto1 = afdv.criptografarTexto(cdc.associacaoDeValores, texto)
             cripto2 = afdv.criptografarTexto(cdc.associacaoDeValores, cripto1)
             cripto3 = afdv.criptografarTexto(cdc.associacaoDeValores, cripto2)
             cripto4 = afdv.criptografarTexto(cdc.associacaoDeValores, cripto3)
-            print(cripto4)
             cripto5 = tdc.func_criptografar_coluna(cripto4, 'C')
-            print(cripto5.upper())
+            print(cripto1)
+            print(cripto5)
 
         else:
             des_cripto_1 = tdc.func_criptografar_coluna(input("Digite um texto para descriptografar:\n"), 'D')
             des_cripto_2 = afdv.criptografarTexto(cdc.associacaoDeValoresVolta, des_cripto_1)
-
-            print(f'Descriptografado: {des_cripto_2.lower()}')
+            des_cripto_3 = afdv.criptografarTexto(cdc.associacaoDeValoresVolta, des_cripto_2)
+            des_cripto_4 = afdv.criptografarTexto(cdc.associacaoDeValoresVolta, des_cripto_3)
+            des_cripto_5 = afdv.criptografarTexto(cdc.associacaoDeValoresVolta, des_cripto_4)
+            print(f'Descriptografado: {des_cripto_5}')
 
         #VALOR PARA TESTE
-        #1234567890abcdefghijklmnopqrstuvwxyz !@#$%^&*()-_=+[{]};:|<,>.?
+        #1234567890abcdefghijklmnopqrstuvwxyz !@#$%^&*()-_=+[{]};:<,>.?
