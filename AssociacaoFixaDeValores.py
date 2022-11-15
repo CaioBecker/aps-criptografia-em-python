@@ -11,7 +11,6 @@ def criptografarTexto(cripto, texto):
         textoCriptografado.append(cripto[i])
 
     texto = ''
-
     for i in textoCriptografado:
         texto = texto + str(i)
 
